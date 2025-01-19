@@ -1,22 +1,29 @@
 <div>
     <h1>Admin Panel</h1>
 
-    <div *ngIf="bookings.length === 0">
-        <p>No bookings yet.</p>
+    <div>
+        <label for="busIdSelect"><strong>Select Bus ID:</strong></label>
+        <select id="busIdSelect" [(ngModel)]="selectedBusId" (change)="onBusIdChange()">
+            <option value="">-- Select a Bus ID --</option>
+            <option *ngFor="let busId of busIds" [value]="busId">
+                {{ busId }}
+            </option>
+        </select>
     </div>
 
-    <div *ngIf="bookings.length > 0">
+    <div *ngIf="filteredBookings.length === 0 && selectedBusId">
+        <p>No bookings found for the selected Bus ID.</p>
+    </div>
+
+    <div *ngIf="filteredBookings.length > 0">
         <h2>Bookings:</h2>
-        <div *ngFor="let booking of bookings">
+        <div *ngFor="let booking of filteredBookings">
             <div class="booking-item">
                 <p><strong>Customer Name:</strong> {{ booking.name }}</p>
                 <p><strong>Bus No.:</strong> {{ booking.busNumber }}</p>
                 <p><strong>Seat No.:</strong> {{ booking.seatNo }}</p>
                 <p><strong>Destination:</strong> {{ booking.destination }}</p>
                 <p><strong>Booking Date:</strong> {{ booking.bookingDate | date: 'short' }}</p>
-
-                <!-- View Bus Details Button -->
-                <button (click)="viewBusDetails(booking.busId)">View Bus Details</button>
             </div>
         </div>
     </div>

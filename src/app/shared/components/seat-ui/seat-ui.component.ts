@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Seat } from 'src/app/models/seat.interface';
 import { SeatService } from '../../services/seat/seat.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-seat-ui',
@@ -20,6 +21,8 @@ export class SeatUiComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.busId = params['busId'];
+      console.log(this.busId);
+      
       if (this.busId) {
         this.loadSeats();
       }
