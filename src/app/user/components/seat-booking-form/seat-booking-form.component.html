@@ -1,0 +1,81 @@
+<div class="booking-form-container">
+    <div class="booking-form-wrapper">
+        <div class="form-header">
+            <h3>Seat Booking Form</h3>
+            <button class="close-btn" (click)="bookingComplete.emit()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="booking-form">
+            <div class="form-group">
+                <label for="name">
+                    <i class="fas fa-user"></i>
+                    Name
+                </label>
+                <input type="text" id="name" formControlName="name" placeholder="Enter your name"
+                    [class.error]="bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched">
+                <div class="error-message" *ngIf="bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched">
+                    <span *ngIf="bookingForm.get('name')?.errors?.['required']">Name is required</span>
+                    <span *ngIf="bookingForm.get('name')?.errors?.['minlength']">Name must be at least 3
+                        characters</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="busNumber">
+                        <i class="fas fa-bus"></i>
+                        Bus No.
+                    </label>
+                    <input type="text" id="busNumber" formControlName="busNumber" readonly class="readonly-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="seatNo">
+                        <i class="fas fa-chair"></i>
+                        Seat No.
+                    </label>
+                    <input type="text" id="seatNo" formControlName="seatNo" readonly class="readonly-input">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Select Destination
+                </label>
+                <select id="destination" formControlName="destination"
+                    [class.error]="bookingForm.get('destination')?.invalid && bookingForm.get('destination')?.touched">
+                    <option value="">Select destination</option>
+                    <option *ngFor="let dest of destinations" [value]="dest">
+                        {{dest}}
+                    </option>
+                </select>
+                <div class="error-message"
+                    *ngIf="bookingForm.get('destination')?.invalid && bookingForm.get('destination')?.touched">
+                    Please select a destination
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time">
+                    <i class="fas fa-clock"></i>
+                    Time
+                </label>
+                <input type="text" id="time" formControlName="time" readonly class="readonly-input">
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" (click)="onCancel()">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid">
+                    <i class="fas fa-check"></i>
+                    Book Seat
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

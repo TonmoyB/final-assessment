@@ -1,0 +1,77 @@
+/* src/app/user/components/seat-booking-form/seat-booking-form.component.css */
+
+.booking-form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.booking-form-wrapper {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.readonly-input {
+    background-color: #f7f7f7;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #f44336;
+    color: white;
+}
+
+.error {
+    border-color: red;
+}

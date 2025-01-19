@@ -1,0 +1,17 @@
+<div class="bus-selection-container">
+    <div class="bus-selection-header">
+        <h2>Select Bus</h2>
+        <p>Choose a bus to book your seat</p>
+    </div>
+
+    <div class="bus-grid">
+        <div class="bus-card" *ngFor="let bus of buses" (click)="selectBus(bus)">
+            <div class="bus-number">{{bus.busNumber}}</div>
+            <div class="bus-info">
+                <p class="route">{{bus.route}}</p>
+                <p class="time">Departure: {{bus.departureTime}}</p>
+            </div>
+            <button class="btn-select">Select Bus</button>
+        </div>
+    </div>
+</div>

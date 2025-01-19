@@ -1,0 +1,11 @@
+<div class="bus-body">
+    <div class="driver-section">
+        <span>Driver</span>
+    </div>
+
+    <div class="seats">
+        <div *ngFor="let seat of seats" class="seat" [class.booked]="seat.isBooked" (click)="onSeatClick(seat)">
+            {{ seat.id }}
+        </div>
+    </div>
+</div>
