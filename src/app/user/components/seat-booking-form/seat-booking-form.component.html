@@ -61,9 +61,16 @@
             <div class="form-group">
                 <label for="time">
                     <i class="fas fa-clock"></i>
-                    Time
+                    Select Time
                 </label>
-                <input type="text" id="time" formControlName="time" readonly class="readonly-input">
+                <select id="time" formControlName="time"
+                    [class.error]="bookingForm.get('time')?.invalid && bookingForm.get('time')?.touched">
+                    <option value="">Select a time</option>
+                    <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                </select>
+                <div class="error-message" *ngIf="bookingForm.get('time')?.invalid && bookingForm.get('time')?.touched">
+                    Please select a time
+                </div>
             </div>
 
             <div class="form-actions">

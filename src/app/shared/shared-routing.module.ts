@@ -5,7 +5,7 @@ import { SeatUiComponent } from './components/seat-ui/seat-ui.component';
 import { BusUiComponent } from './components/bus-ui/bus-ui.component';
 const routes: Routes = [
   {
-    path: 'seat-booking/:seatId',
+    path: 'seat-booking/:seatId/:busId',
     component: SeatBookingFormComponent
   },
   {

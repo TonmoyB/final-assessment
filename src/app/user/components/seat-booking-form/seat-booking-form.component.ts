@@ -17,6 +17,7 @@ export class SeatBookingFormComponent implements OnInit {
 
   bookingForm: FormGroup;
   destinations: string[] = [];
+  availableTimes: string[] = ['8:00 AM', '9:00 AM', '5:00 PM', '6:00 PM']; 
   seatId: string = '';
   busId: string = '';
 
@@ -26,7 +27,7 @@ export class SeatBookingFormComponent implements OnInit {
       busNumber: [{ value: '', disabled: true }],
       seatNo: [{ value: '', disabled: true }],
       destination: ['', Validators.required],
-      time: [{ value: '', disabled: true }]
+      time: ['', Validators.required]
     })
   }
 
@@ -59,7 +60,6 @@ export class SeatBookingFormComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
     if (this.bookingForm.valid) {
       const formValue = this.bookingForm.getRawValue();
@@ -87,9 +87,8 @@ export class SeatBookingFormComponent implements OnInit {
 
   onCancel() {
     this.updateSeatStatus(this.busId, this.seatId, false);
-
     this.bookingComplete.emit();
-    this.router.navigate([`/seat-ui/${this.busId}`]);
+    this.router.navigate(['/']);
   }
 
   private updateSeatStatus(busId: string, seatId: string, isBooked: boolean) {

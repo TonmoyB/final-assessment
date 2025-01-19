@@ -37,7 +37,7 @@ export class SeatUiComponent implements OnInit {
       alert(`Seat ${seat.id} is already booked!`);
     } else {
       this.seatService.updateSeatStatus(seat.id, this.busId!, true);
-      this.router.navigate(['/seat-booking', seat.id]);
+      this.router.navigate(['/seat-booking', seat.id, this.busId]);
     }
   }
 }
